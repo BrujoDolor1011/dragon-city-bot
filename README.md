@@ -53,4 +53,4 @@ Este proyecto está bajo la licencia **MIT**. Consulta el archivo `LICENSE` para
 
 ---
 
-🔹 Creado con ❤️ por [Tu Nombre](https://github.com/BrujoDolor1011)  
+🔹 Creado con ❤️ por [BrujoDolor](https://github.com/BrujoDolor1011)  
