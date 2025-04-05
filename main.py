@@ -23,9 +23,7 @@ BOTS = {
     "Collect Gold & Food Bot": "collect_gold_food",
     "Food Farm Bot": "food_farm",
     "Terra Breed Bot": "terra_breed",
-    "Terra Hatch Bot": "terra_hatch",
-    "Watch DTV Ad Bot": "watch_dtv_ad",
-    "Watch Greenhouse Ad Bot": "watch_greenhouse_ad"
+    "Terra Hatch Bot": "terra_hatch"
 }
 
 
@@ -78,10 +76,6 @@ class BotRunnerApp(ctk.CTk):
             run_terra_breed()
         elif bot_name == "Terra Hatch Bot":
             run_terra_hatch()
-        elif bot_name == "Watch DTV Ad Bot":
-            run_watch_dtv_ad()
-        elif bot_name == "Watch Greenhouse Ad Bot":
-            run_watch_greenhouse_ad()
 
         self.running = False
         self.stop_button.configure(state="disabled")
@@ -186,58 +180,6 @@ def run_terra_hatch():
         for imagen, delay in IMAGENES:
             locate_and_click(imagen, f"{os.path.basename(imagen)}")
             time.sleep(delay)
-
-def run_watch_dtv_ad():
-    IMAGENES = [
-        (os.path.join(ASSETS_DIR, 'give-me-prizes.png'), 'Give Me Prizes! Button found'),
-        (os.path.join(ASSETS_DIR, 'get-rewards.png'), 'Get Rewards Button found'),
-        (os.path.join(ASSETS_DIR, 'claim-and-watch-next.png'), 'Claim And Watch Next Button found'),
-        (os.path.join(ASSETS_DIR, 'claim-yellow.png'), 'Yellow Claim Button found'),
-        (os.path.join(ASSETS_DIR, 'claim-green.png'), 'Green Claim Button found'),
-        (os.path.join(ASSETS_DIR, 'close-dtv-coin.png'), 'Close DTV Coin Button found')
-    ]
-    while app.running and is_dragon_city_open():
-        if locate_and_click(os.path.join(ASSETS_DIR, 'next-in-5h.png'), "Next In 5h found", click=False):
-            log("Time to take a break! Next In 6 hours.")
-            break
-        elif locate_and_click(os.path.join(ASSETS_DIR, 'next-in-2h.png'), "Next In 2h found", click=False):
-            log("Time to take a break! Next In 3 hours.")
-            break
-        elif locate_and_click(os.path.join(ASSETS_DIR, 'out-of-ads.png'), "Out of Ads found", click=False):
-            log("No Ads this time, try again later.")
-            break
-        elif any(locate_and_click(os.path.join(ASSETS_DIR, f'close-reward-{i}.png'), f'Close Reward Button {i} found')for i in range(1, 38)):
-            time.sleep(5)
-            continue
-        elif locate_and_click(os.path.join(ASSETS_DIR, 'tap-to-open.png'), 'Tap To Open found'):
-            screen_width, screen_height = pyautogui.size()
-            pyautogui.click(screen_width // 2, screen_height // 2)
-            time.sleep(5)
-            continue
-        for imagen, descripcion in IMAGENES:
-            locate_and_click(imagen, descripcion)
-
-
-def run_watch_greenhouse_ad():
-    IMAGENES = [
-        (os.path.join(ASSETS_DIR, 'play-ad.png'), 'Play Ad Button found')
-    ]
-    while app.running and is_dragon_city_open():
-        if locate_and_click(os.path.join(ASSETS_DIR, 'next-in-5h.png'), "Next In 5h found", click=False):
-            log("Time to take a break! Next In 6 hours.")
-            break
-        elif locate_and_click(os.path.join(ASSETS_DIR, 'next-in-2h.png'), "Next In 2h found", click=False):
-            log("Time to take a break! Next In 3 hours.")
-            break
-        elif locate_and_click(os.path.join(ASSETS_DIR, 'out-of-ads.png'), "Out of Ads found", click=False):
-            log("No Ads this time, try again later.")
-            break
-        elif any(locate_and_click(os.path.join(ASSETS_DIR, f'close-reward-{i}.png'), f'Close Reward Button {i} found')for i in range(1, 38)):
-            time.sleep(5)
-            continue
-        for imagen, descripcion in IMAGENES:
-            locate_and_click(imagen, descripcion)
-
 
 if __name__ == "__main__":
     app = BotRunnerApp()
