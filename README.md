@@ -8,8 +8,6 @@ Automatización de tareas en **Dragon City** utilizando Python y `pyautogui`. Es
 ✅ **Food Farm Bot** - Administra las granjas de comida.  
 ✅ **Terra Breed Bot** - Cría dragones Tierra repetidamente.  
 ✅ **Terra Hatch Bot** - Incuba y vende dragones Tierra automáticamente.  
-✅ **Watch DTV Ad Bot** - Ve anuncios en **Dragon TV** para obtener recompensas.  
-✅ **Watch Greenhouse Ad Bot** - Ve anuncios en el **Greenhouse** para obtener recompensas.  
 
 ## 🛠 Requisitos
 
